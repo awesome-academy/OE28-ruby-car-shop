@@ -82,6 +82,10 @@ class Post < ApplicationRecord
     where "MONTH(favorite_lists.created_at) = ?", Time.zone.now.strftime("%m")
   end)
 
+  scope :order_by_car_price, (lambda do |sort_type|
+    left_joins(:car).order(cars: {price: sort_type})
+  end)
+
   delegate :name, to: :user, prefix: true
   delegate :price, :image, :year_of_manufacture_name, :gearbox_name,
            :origin_name, :car_type_name, :brand_name, :car_model_name,
