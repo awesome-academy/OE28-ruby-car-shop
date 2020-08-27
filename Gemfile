@@ -7,6 +7,8 @@ gem "bcrypt"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap-sass"
 gem "carrierwave"
+gem "ckeditor", github: "galetahub/ckeditor"
+gem "cocoon"
 gem "config"
 gem "faker"
 gem "font-awesome-rails"

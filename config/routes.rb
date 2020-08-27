@@ -28,5 +28,6 @@ Rails.application.routes.draw do
       post "posts/change_activated"
       resources :posts
     end
+    mount Ckeditor::Engine => '/ckeditor'
   end
 end

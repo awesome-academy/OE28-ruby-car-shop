@@ -1,0 +1,14 @@
+<tr class="nested-fields">
+  <td>
+    <%= f.file_field :image, accept: Settings.accepted_type_image, class: "form-control" %>
+    <%= f.hidden_field :image_cache, value: f.object.image_cache %>
+  </td>
+  <td class="form-group">
+    <% if f.object.image.url.present? %>
+      <%= image_tag f.object.image.url, size: Settings.image_size, class: "img-responsive" %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to_remove_association t("remove"), f %>
+  </td>
+</tr>

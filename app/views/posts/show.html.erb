@@ -3,9 +3,12 @@
     <div class="row">
       <div class="col-md-6 col-xs-12">
         <div>
-          <%= image_tag @post.car_image.url, class: "img-responsive"  %>
+          <%= image_tag @post.images.first.image.url, class: "img-responsive"  %>
         </div>
         <br>
+        <div class="row">
+          <%= render partial: "car_images", collection: @post.images, as: :image %>
+        </div>
       </div>
       <div class="col-md-6 col-xs-12">
         <h2><%= @post.name %></h2>
@@ -125,7 +128,7 @@
               <h4><%= t ".description" %></h4>
             </div>
             <div class="panel-body">
-              <p><%= @post.content %></p>
+              <p><%= @post.content.html_safe %></p>
             </div>
             <div class="panel-body">
               <h3><%= t "comments.comments" %></h3>

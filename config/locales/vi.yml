@@ -25,6 +25,8 @@ vi:
   lower_price: "Giá thấp đến cao"
   higher_price: "Giá cao đến thấp"
   sort: "Sắp xếp"
+  remove: "Xoá"
+  add_a_photo: "Thêm ảnh"
   layouts:
     header:
       car_list: "Danh sách xe"

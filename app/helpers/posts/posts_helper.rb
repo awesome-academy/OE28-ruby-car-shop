@@ -17,7 +17,21 @@ module Posts::PostsHelper
   end
   # rubocop:enable Metrics/AbcSize
 
+  def option_select form_object, object, object_id
+    form_object.select(
+      object_id,
+      options_for_select(
+        load_dropdown(object),
+        selected: load_selected(form_object)
+      ), {}, class: "form-control"
+    )
+  end
+
   def status_text status
     status ? t("admins.active") : t("admins.inactive")
+  end
+
+  def load_selected form_object
+    form_object.object.id
   end
 end

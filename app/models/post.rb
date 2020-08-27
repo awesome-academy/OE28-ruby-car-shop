@@ -1,14 +1,17 @@
 class Post < ApplicationRecord
-  POST_PARAMS = [:name, :content, :activated, car_attributes:
+  POST_PARAMS = [:name, :content, :activated,
+    images_attributes: [:id, :image, :image_cache, :_destroy], car_attributes:
     [:year_of_manufacture_id, :origin_id, :gearbox_id, :car_type_id, :brand_id,
       :car_model_id, :color_id, :number_of_seat_id, :condition_id, :fuel_id,
-        :image, :price, :mileage]].freeze
+        :price, :mileage]].freeze
 
   belongs_to :user
   has_one :car, dependent: :destroy
   has_many :favorite_lists, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :images, dependent: :destroy
 
+  accepts_nested_attributes_for :images, allow_destroy: true, update_only: true
   accepts_nested_attributes_for :car, allow_destroy: true, update_only: true
 
   validates :name, presence: true, length: {maximum: Settings.post.name_length}

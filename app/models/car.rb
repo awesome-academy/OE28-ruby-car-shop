@@ -13,7 +13,6 @@ class Car < ApplicationRecord
   belongs_to :origin
   belongs_to :post
 
-  validates :image, presence: true
   validates :price, presence: true,
     numericality: {only_integer:
                    Settings.car.price, greater_than: Settings.car.greater_than,
@@ -30,6 +29,4 @@ class Car < ApplicationRecord
   delegate :name, to: :condition, prefix: true
   delegate :name, to: :fuel, prefix: true
   delegate :name, to: :origin, prefix: true
-
-  mount_uploader :image, ImageUploader
 end
