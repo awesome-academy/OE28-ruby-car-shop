@@ -3,6 +3,7 @@ module Posts::PostsHelper
     model.pluck :name, :id
   end
 
+  # rubocop:disable Metrics/AbcSize
   def number_to_price price
     if price < Settings.second_price_limit
       price.to_s + Settings.second_price
@@ -14,6 +15,7 @@ module Posts::PostsHelper
         Settings.second_price
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def status_text status
     status ? t("admins.active") : t("admins.inactive")
