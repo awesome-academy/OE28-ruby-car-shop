@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+  # rubocop:disable Metrics/AbcSize
   def load_posts
     @posts = Post.by_year_of_manufacture(params[:year_of_manufacture_id])
                  .by_fuel(params[:fuel_id])
@@ -42,4 +43,5 @@ class ApplicationController < ActionController::Base
                  .by_condition(params[:condition_id])
                  .include_car
   end
+  # rubocop:enable Metrics/AbcSize
 end
