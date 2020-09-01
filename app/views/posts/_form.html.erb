@@ -1,10 +1,31 @@
 <%= form_for @post do |f| %>
   <%= render "shared/error_messages", object: @post %>
-  <%= f.label :name, t("posts.new.name") %>
-  <%= f.text_field :name, class: "form-control", required: true %>
-  <%= f.label :content, t("posts.new.content") %>
-  <%= f.text_area :content, class: "form-control", required: true %>
-  <%= render "car_form", f: f %>
+  <div class="form-group">
+    <%= f.label :name, t("posts.new.name") %>(*)
+    <%= f.text_field :name, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, t("posts.new.content") %>(*)
+    <%= f.cktext_area :content, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <div class="col-md-3">
+      <%= f.label :image, t("posts.new.image") %>(*)
+    </div>
+    <div class="col-md-9">
+      <table>
+        <%= f.fields_for :images do |image| %>
+          <%= render "image_fields", f: image %>
+        <% end %>
+        <%= link_to_add_association t("add_a_photo"), f, :images, class: "btn btn-default" %>
+      </table>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <%= render "car_form", f: f %>
+  </div>
   <div class="courses-info">
     <%= f.submit yield(:button_text), class: "section-btn btn
       btn-primary btn-block" %>

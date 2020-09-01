@@ -29,5 +29,6 @@ date_time_format: "%F %T"
 image_size_admin: 120
 home_limit: 6
 page_ad: 10
-sort_option: [[<%= I18n.t("lower_price") %>, asc],
-              [<%= I18n.t("higher_price") %>, desc]]
+sort_option: [[<%= I18n.t("lower_price") %>, "asc"],
+              [<%= I18n.t("higher_price") %>, "desc"]]
+ckeditor: "//cdn.ckeditor.com/4.4.0/standard/ckeditor.js"

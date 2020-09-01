@@ -10,3 +10,5 @@ require('./custom')
 require('./favorite_lists/favorite_lists')
 window.$ = window.jQuery = require("jquery");
 require('packs/posts/posts')
+require('cocoon');
+require('packs/ckeditor')

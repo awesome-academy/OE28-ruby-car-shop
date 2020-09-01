@@ -1,30 +1,58 @@
 <%= f.fields_for :car do |c| %>
-  <%= c.label :image, t("posts.new.image") %>
-  <%= c.file_field :image, accept: Settings.accepted_type_image, class: "form-control" %>
-  <%= c.hidden_field :image_cache %>
-  <%= image_tag(@post.car_image.url, size: Settings.image_size, class: "img-responsive") if @post.car_image.url %>
-  <%= c.label :year_of_manufacture_id, t("posts.new.year_of_manufacture") %>
-  <%= c.select(:year_of_manufacture_id, options_for_select(load_dropdown(YearOfManufacture), selected: c.object.year_of_manufacture_id), {}, class: "form-control" )%>
-  <%= c.label :gearbox_id, t("posts.new.gear_box") %>
-  <%= c.select(:gearbox_id, options_for_select(load_dropdown(Gearbox), selected: c.object.gearbox_id), {}, {class: "form-control"}) %>
-  <%= c.label :car_type_id, t("posts.new.car_type") %>
-  <%= c.select(:car_type_id, options_for_select(load_dropdown(CarType), selected: c.object.car_type_id), {}, {class: "form-control"}) %>
-  <%= c.label :brand_id, t("posts.new.brand") %>
-  <%= c.select(:brand_id, options_for_select(load_dropdown(Brand), selected: c.object.brand_id), {}, {class: "form-control"}) %>
-  <%= c.label :car_model_id, t("posts.new.car_model") %>
-  <%= c.select(:car_model_id, options_for_select(load_dropdown(CarModel), selected: c.object.car_model_id), {}, {class: "form-control"}) %>
-  <%= c.label :color_id, t("posts.new.color") %>
-  <%= c.select(:color_id, options_for_select(load_dropdown(Color), selected: c.object.color_id), {}, {class: "form-control"}) %>
-  <%= c.label :number_of_seat_id, t("posts.new.number_of_seat") %>
-  <%= c.select(:number_of_seat_id, options_for_select(load_dropdown(NumberOfSeat), selected: c.object.number_of_seat_id), {}, {class: "form-control"}) %>
-  <%= c.label :condition_id, t("posts.new.condition") %>
-  <%= c.select(:condition_id, options_for_select(load_dropdown(Condition), selected: c.object.condition_id), {}, {class: "form-control"}) %>
-  <%= c.label :fuel_id, t("posts.new.fuel") %>
-  <%= c.select(:fuel_id, options_for_select(load_dropdown(Fuel), selected: c.object.fuel_id), {}, {class: "form-control"}) %>
-  <%= c.label :origin_id, t("posts.new.origin") %>
-  <%= c.select(:origin_id, options_for_select(load_dropdown(Origin), selected: c.object.origin_id), {}, {class: "form-control"}) %>
-  <%= c.label :price, t("posts.new.price") %>
-  <%= c.text_field :price, class: "form-control", required: true %>
-  <%= c.label :mileage, t("posts.new.mileage") %>
-  <%= c.text_field :mileage, class: "form-control", required: true %>
+  <div class="form-group">
+    <div class="col-md-4">
+      <%= c.label :year_of_manufacture_id, t("posts.new.year_of_manufacture") %>(*)
+      <%= option_select c, YearOfManufacture, :year_of_manufacture_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :gearbox_id, t("posts.new.gear_box") %>(*)
+      <%= option_select c, Gearbox, :gearbox_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :car_type_id, t("posts.new.car_type") %>(*)
+      <%= option_select c, CarType, :car_type_id %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-4">
+      <%= c.label :brand_id, t("posts.new.brand") %>(*)
+      <%= option_select c, Brand, :brand_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :car_model_id, t("posts.new.car_model") %>(*)
+      <%= option_select c, CarModel, :car_model_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :color_id, t("posts.new.color") %>(*)
+      <%= option_select c, Color, :color_id %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-4">
+      <%= c.label :number_of_seat_id, t("posts.new.number_of_seat") %>(*)
+      <%= option_select c, NumberOfSeat, :number_of_seat_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :condition_id, t("posts.new.condition") %>(*)
+      <%= option_select c, Condition, :condition_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :fuel_id, t("posts.new.fuel") %>(*)
+      <%= option_select c, Fuel, :fuel_id %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-4">
+      <%= c.label :origin_id, t("posts.new.origin") %>(*)
+      <%= option_select c, Origin, :origin_id %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :price, t("posts.new.price") %>(*)
+      <%= c.text_field :price, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-4">
+      <%= c.label :mileage, t("posts.new.mileage") %>(*)
+      <%= c.text_field :mileage, class: "form-control", required: true %>
+    </div>
+  </div>
 <% end %>
