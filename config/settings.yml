@@ -32,3 +32,5 @@ page_ad: 10
 sort_option: [[<%= I18n.t("lower_price") %>, "asc"],
               [<%= I18n.t("higher_price") %>, "desc"]]
 ckeditor: "//cdn.ckeditor.com/4.4.0/standard/ckeditor.js"
+password_default: foobar
+phone: 0987654321
