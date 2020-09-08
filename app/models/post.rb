@@ -19,11 +19,11 @@ class Post < ApplicationRecord
     {maximum: Settings.post.content_length}
   validates_associated :car
 
-  scope :by_user_id, ->(user_id){where user_id: user_id}
+  scope :by_user_id, ->(user_id){where user_id: user_id if user_id.present?}
 
   scope :by_post_id, ->(post_id){where post_id: post_id}
 
-  scope :by_ids, ->(ids){where id: ids}
+  scope :by_ids, ->(ids){where id: ids if ids.present?}
 
   scope :by_year_of_manufacture, (lambda do |year_of_manufacture_ids|
     if year_of_manufacture_ids.present?
@@ -86,7 +86,7 @@ class Post < ApplicationRecord
   end)
 
   scope :order_by_car_price, (lambda do |sort_type|
-    left_joins(:car).order(cars: {price: sort_type})
+    left_joins(:car).order("price " + sort_type)
   end)
 
   delegate :name, to: :user, prefix: true
