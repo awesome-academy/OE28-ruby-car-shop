@@ -5,6 +5,7 @@ require "shoulda/matchers"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+include RSpecSessionHelper
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
