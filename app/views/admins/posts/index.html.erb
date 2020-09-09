@@ -8,19 +8,20 @@
           <i class="fa fa-plus-circle"></i> <%= t("posts.new.create_post") %>
         <% end %>
       </div>
+      <%= render "search" %>
       <div class="card mb-4">
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th><%= t("posts.new.name") %></th>
+                  <th><%= sort_link @search, :name, t("posts.new.name") %></th>
                   <th><%= t("posts.new.image") %></th>
-                  <th><%= t("posts.new.year_of_manufacture") %></th>
-                  <th><%= t("posts.new.car_type") %></th>
-                  <th><%= t("created_at") %></th>
-                  <th><%= t("posts.new.price") %></th>
-                  <th><%= t("posts.new.status") %></th>
+                  <th><%= sort_link @search, :car_year_of_manufacture_name, t("posts.new.year_of_manufacture") %></th>
+                  <th><%= sort_link @search, :car_car_type_name, t("posts.new.car_type") %></th>
+                  <th><%= sort_link @search, :created_at, t("created_at") %></th>
+                  <th><%= sort_link @search, :price, t("posts.new.price") %></th>
+                  <th><%= sort_link @search, :activated, t("posts.new.status") %></th>
                   <th colspan="2"></th>
                 </tr>
               </thead>

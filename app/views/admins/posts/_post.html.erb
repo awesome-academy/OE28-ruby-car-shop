@@ -1,6 +1,6 @@
 <tr>
   <td><%= post.name %></td>
-  <td><%= image_tag post.car_image.url, size: Settings.image_size_admin, class: "img-responsive"  %></td>
+  <td><%= image_tag post.images.first.image.url, size: Settings.image_size_admin, class: "img-responsive"  %></td>
   <td><%= post.car_year_of_manufacture_name %></td>
   <td><%= post.car_car_type_name %></td>
   <td><%= post.created_at.strftime Settings.date_time_format %></td>

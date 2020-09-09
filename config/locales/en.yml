@@ -27,6 +27,7 @@ en:
   sort: "Sort by"
   remove: "Remove"
   add_a_photo: "Add a photo"
+  reset: "Reset"
   layouts:
     header:
       car_list: "Car list"
@@ -132,3 +133,5 @@ en:
     inactive: "Inactive"
     not_admin: "You are not admin."
     manage: "Manage"
+  search:
+    favorite_count: "Favorite count"
