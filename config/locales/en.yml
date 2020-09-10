@@ -28,6 +28,7 @@ en:
   remove: "Remove"
   add_a_photo: "Add a photo"
   reset: "Reset"
+  email_resemble_password: "can't resemble password"
   layouts:
     header:
       car_list: "Car list"

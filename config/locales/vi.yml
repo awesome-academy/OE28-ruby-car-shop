@@ -28,6 +28,7 @@ vi:
   remove: "Xoá"
   add_a_photo: "Thêm ảnh"
   reset: "Đặt lại"
+  email_resemble_password: "không được giống password"
   layouts:
     header:
       car_list: "Danh sách xe"

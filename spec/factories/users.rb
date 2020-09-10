@@ -7,5 +7,6 @@ FactoryBot.define do
     password {Settings.password_default}
     password_confirmation {Settings.password_default}
     role {Faker::Number.within(range: 0..1)}
+    confirmed_at { Date.today }
   end
 end

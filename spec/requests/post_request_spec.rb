@@ -15,69 +15,60 @@ RSpec.describe PostsController, type: :controller do
     end
 
     describe "GET #new" do
-      before {get :new}
-      it { expect(response).to redirect_to login_url }
-      it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+      before {get :new, params: {locale: "vi"}}
+      it { expect(response).to redirect_to new_user_session_path }
     end
 
     describe "POST #create" do
       context "when params is valid" do
-        before {post :create, params: {post: params}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {post :create, params: {post: params, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
 
       context "when params is invalid" do
-        before {post :create, params: {post: {name: ""}}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {post :create, params: {post: {name: ""}, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
     end
 
     describe "GET #edit" do
       context "when post_id is invalid" do
-        before {get :edit, params: {id: 0}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {get :edit, params: {id: 0, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
 
       context "when post_id is valid" do
-        before {get :edit, params: {id: posts.id}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {get :edit, params: {id: posts.id, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
     end
 
     describe "PUT #update" do
       context "when post_id is invalid" do
-        before {put :update, params: {id: 0}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {put :update, params: {id: 0, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
 
       context "when post_id is valid" do
-        before {put :update, params: {id: posts.id, post: params}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {put :update, params: {id: posts.id, post: params, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
     end
 
     describe "DELETE #destroy" do
       context "when post_id is invalid" do
-        before {delete :destroy, params: {id: 0}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {delete :destroy, params: {id: 0, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
 
       context "when post_id is valid" do
-        before {delete :destroy, params: {id: posts_2.id}}
-        it { expect(response).to redirect_to login_url }
-        it { expect(flash[:danger]).to eq I18n.t("users.logged_in") }
+        before {delete :destroy, params: {id: posts_2.id, locale: "vi"}}
+        it { expect(response).to redirect_to new_user_session_path }
       end
     end
 
     describe "GET #show" do
-      before {get :show, params: {id: posts.id}}
+      before {get :show, params: {id: posts.id, locale: "vi"}}
       it { expect(response).to render_template :show }
     end
   end
