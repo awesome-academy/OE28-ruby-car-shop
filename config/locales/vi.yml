@@ -27,6 +27,7 @@ vi:
   sort: "Sắp xếp"
   remove: "Xoá"
   add_a_photo: "Thêm ảnh"
+  reset: "Đặt lại"
   layouts:
     header:
       car_list: "Danh sách xe"
@@ -132,3 +133,5 @@ vi:
     inactive: "Chưa kích hoạt"
     not_admin: "Bạn không phải là admin."
     manage: "Quản lý"
+  search:
+    favorite_count: "Số lượt thích"

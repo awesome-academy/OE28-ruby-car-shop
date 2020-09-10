@@ -89,6 +89,13 @@ class Post < ApplicationRecord
     left_joins(:car).order("price " + sort_type)
   end)
 
+  ransacker :favorite_count do
+    query = <<-SQL
+      (SELECT COUNT(id) FROM favorite_lists GROUP BY favorite_lists.id)
+    SQL
+    Arel.sql(query)
+  end
+
   delegate :name, to: :user, prefix: true
   delegate :price, :image, :year_of_manufacture_name, :gearbox_name,
            :origin_name, :car_type_name, :brand_name, :car_model_name,

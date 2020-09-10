@@ -1,0 +1,72 @@
+<%= search_form_for [:admins, @search] do |f| %>
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label><%= t "posts.new.year_of_manufacture" %>:</label>
+      <%= f.select :car_year_of_manufacture_id_eq, options_for_select(load_dropdown(YearOfManufacture), @search.car_year_of_manufacture_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.gear_box" %>:</label>
+      <%= f.select :car_gearbox_id_eq, options_for_select(load_dropdown(Gearbox), @search.car_gearbox_id_eq), {include_blank: true}, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.car_type" %>:</label>
+      <%= f.select :car_car_type_id_eq, options_for_select(load_dropdown(CarType), @search.car_car_type_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.brand" %>:</label>
+      <%= f.select :car_brand_id_eq, options_for_select(load_dropdown(Brand), @search.car_brand_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label><%= t "posts.new.car_model" %>:</label>
+      <%= f.select :car_car_model_id_eq, options_for_select(load_dropdown(CarModel), @search.car_car_model_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.color" %>:</label>
+      <%= f.select :car_color_id_eq, options_for_select(load_dropdown(Color), @search.car_color_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.number_of_seat" %>:</label>
+      <%= f.select :car_number_of_seat_id_eq, options_for_select(load_dropdown(NumberOfSeat), @search.car_number_of_seat_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.condition" %>:</label>
+      <%= f.select :car_condition_id_eq, options_for_select(load_dropdown(Condition), @search.car_condition_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label><%= t "posts.new.fuel" %>:</label>
+      <%= f.select :car_fuel_id_eq, options_for_select(load_dropdown(Fuel), @search.car_fuel_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "posts.new.origin" %>:</label>
+      <%= f.select :car_origin_id_eq, options_for_select(load_dropdown(Origin), @search.car_origin_id_eq), {include_blank: true},
+          class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <label><%= t "search.favorite_count" %>:</label>
+      <%= f.text_field :favorite_count_gteq, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+      <%= f.submit t("search"), class: "section-btn btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to t("reset"), admins_posts_path, class: "section-btn btn btn-primary btn-block" %>
+    </div>
+  </div>
+</div>
+<% end %>
+<br>

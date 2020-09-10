@@ -10287,3 +10287,8 @@ input.btn-block[type=submit], input.btn-block[type=reset], input.btn-block[type=
     color: state-danger-text;
   }
 }
+
+input.btn-block[type=submit] {
+  margin-top: 0;
+  width: 100%;
+}
