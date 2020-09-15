@@ -20,7 +20,7 @@
   <li><%= t "users.new.phone_number"%>: <%= user.phone_number %></li>
   <li><%= t "users.new.email"%>: <%= user.email %></li>
 </ul>
-<% if logged_in? && current_user?(user) %>
+<% if user_signed_in? && current_user?(user) %>
   <%= link_to new_post_path, class: "section-btn btn btn-primary btn-block" do %>
     <i class="fa fa-plus-circle"></i> <%= t("posts.new.create_post") %>
   <% end %>

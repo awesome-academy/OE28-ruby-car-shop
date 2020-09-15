@@ -5,13 +5,17 @@ Rails.application.routes.draw do
     get "/about-us", to: "static_pages#about_us"
     get "/contact-us", to: "static_pages#contact_us"
     get "/car-list", to: "posts#index"
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout",  to: "sessions#destroy"
     post "favorite_lists/update"
     post "posts/update_index"
+    devise_for :users
+
+    devise_scope :user do
+      get "signup", to: "users/registrations#new"
+      post "signup", to: "users/registrations#create"
+      get "login", to: "users/sessions#new"
+      post "login", to: "users/sessions#create"
+      delete "logout", to: "users/sessions#destroy"
+    end
 
     resources :favorite_lists, only: %i(show update index)
     resources :posts
