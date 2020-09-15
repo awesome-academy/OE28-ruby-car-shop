@@ -29,6 +29,8 @@ vi:
   add_a_photo: "Thêm ảnh"
   reset: "Đặt lại"
   email_resemble_password: "không được giống password"
+  signin_with_facebook: "Đăng nhập bằng Facebook"
+  signin_with_google: "Đăng nhập bằng Google"
   layouts:
     header:
       car_list: "Danh sách xe"

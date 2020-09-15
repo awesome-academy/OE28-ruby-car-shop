@@ -17,6 +17,26 @@
             <%= f.submit t("log_in"), class: "section-btn btn btn-primary btn-block" %>
           </div>
         <% end %>
+        <div class="courses-info">
+          <div class="row">
+            <div class="col-md-6">
+              <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-block" do %>
+                <i class="fa fa-facebook-square"></i>
+                <span class="ml-2">
+                  <%= t "signin_with_facebook" %>
+                </span>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary btn-block btn-google" do %>
+                <i class="fa fa-google"></i>
+                <span class="ml-2">
+                  <%= t "signin_with_google" %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
         <div class="text-center">
           <p>
             <%= t "sessions.new.new_user" %>
