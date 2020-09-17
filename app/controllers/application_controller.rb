@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
+  rescue_from CanCan::AccessDenied do |_exception|
+    respond_to do |format|
+      format.html do
+        redirect_to(request.referer ||
+                    root_url, alert: t("global.no_permission"))
+      end
+      format.js{render nothing: true, status: :not_found}
+    end
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

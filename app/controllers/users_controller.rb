@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :load_user, :authenticate_user!, only: %i(show edit update)
+  load_and_authorize_resource
 
   def show
     @posts = current_user.posts.page(params[:page]).per Settings.page

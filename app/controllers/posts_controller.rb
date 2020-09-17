@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i(index show)
   before_action :load_posts, only: :index
-  before_action :load_post, only: %i(show update edit)
-  before_action :correct_user, only: %i(update edit destroy)
+  before_action :load_post, only: %i(show update edit destroy)
+  load_and_authorize_resource
   before_action :check_activated?, only: :show
 
   def index

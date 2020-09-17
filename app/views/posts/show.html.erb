@@ -104,12 +104,14 @@
                 <i class="fa fa-heart"></i> <%= favorite_list_text %>(<%= @favorite_count %>)
               <% end %>
             </div>
-            <% if current_user? @post.user %>
+            <% if can? :update, @post %>
               <div class="col-md-3">
                 <%= link_to edit_post_path(@post.id), class: "section-btn btn btn-primary btn-block" do %>
                   <i class="fa fa-pencil-square-o"></i> <%= t "edit" %>
                 <% end %>
               </div>
+            <% end %>
+            <% if can? :destroy, @post %>
               <div class="col-md-3">
                 <%= link_to @post, method: :delete, data: { confirm: t(".you_sure") }, class: "section-btn btn btn-primary btn-block" do %>
                   <i class="fa fa-trash-o"></i> <%= t "delete" %>
@@ -149,6 +151,6 @@
           <%= render @post.user %>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </section>
