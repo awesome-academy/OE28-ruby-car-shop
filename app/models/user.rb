@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :omniauthable, omniauth_providers: [:facebook,
+                                                           :google_oauth2]
 
   enum role: {user: 0, admin: 1}
 
@@ -27,6 +29,36 @@ class User < ApplicationRecord
   validates :email_resemble_password, email: true
 
   before_save :downcase_email
+
+  class << self
+    def new_with_session params, session
+      super.tap do |user|
+        if data = session["devise.facebook_data"] &&
+                  session["devise.facebook_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+
+    def from_omniauth auth
+      auth_user = User.find_by email: auth.info.email
+      return auth_user if auth_user
+
+      omniauth_user auth
+    end
+
+    def omniauth_user auth
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.name = auth.info.name
+        user.password = Devise.friendly_token[0, 20]
+        user.password_confirmation = user.password
+        user.phone_number = Settings.phone
+        user.address = Settings.address
+        user.confirmed_at = Time.zone.now
+      end
+    end
+  end
 
   private
 

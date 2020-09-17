@@ -34,3 +34,6 @@ sort_option: [[<%= I18n.t("lower_price") %>, "asc"],
 ckeditor: "//cdn.ckeditor.com/4.4.0/standard/ckeditor.js"
 password_default: foobar
 phone: 0987654321
+address: "Hà Nội"
+facebook: "Facebook"
+google: "Google"

@@ -29,6 +29,8 @@ en:
   add_a_photo: "Add a photo"
   reset: "Reset"
   email_resemble_password: "can't resemble password"
+  signin_with_facebook: "Signin with Facebook"
+  signin_with_google: "Signin with Google"
   layouts:
     header:
       car_list: "Car list"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   scope "(:locale)", locale: /en|vi/ do
     root "home#index"
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
     get "/car-list", to: "posts#index"
     post "favorite_lists/update"
     post "posts/update_index"
-    devise_for :users
+    devise_for :users, skip: :omniauth_callbacks
 
     devise_scope :user do
       get "signup", to: "users/registrations#new"
