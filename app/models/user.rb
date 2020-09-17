@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :favorite_lists, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  rolify
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: [:facebook,
@@ -29,6 +31,7 @@ class User < ApplicationRecord
   validates :email_resemble_password, email: true
 
   before_save :downcase_email
+  after_create :assign_default_role
 
   class << self
     def new_with_session params, session
@@ -58,6 +61,10 @@ class User < ApplicationRecord
         user.confirmed_at = Time.zone.now
       end
     end
+  end
+
+  def assign_default_role
+    add_role :user if roles.blank?
   end
 
   private
