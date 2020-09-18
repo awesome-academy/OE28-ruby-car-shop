@@ -51,6 +51,7 @@ class Admins::PostsController < AdminsController
   def change_activated
     @post.activated = !@post.activated
     @post.save
+    PostsWorker.perform_async @post.id
     respond_to :js
   end
 

@@ -31,6 +31,9 @@ vi:
   email_resemble_password: "không được giống password"
   signin_with_facebook: "Đăng nhập bằng Facebook"
   signin_with_google: "Đăng nhập bằng Google"
+  your_post_is_activated: "Bài đăng của bạn đã đươc hiển thị lên trang chủ"
+  hello: "Chào"
+  activated_post: "Kích hoạt bài viết"
   layouts:
     header:
       car_list: "Danh sách xe"

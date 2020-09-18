@@ -31,6 +31,9 @@ en:
   email_resemble_password: "can't resemble password"
   signin_with_facebook: "Signin with Facebook"
   signin_with_google: "Signin with Google"
+  your_post_is_activated: "Your post is on homepage."
+  hello: "Hello"
+  activated_post: "Activated post"
   layouts:
     header:
       car_list: "Car list"
