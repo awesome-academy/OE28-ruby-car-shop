@@ -30,8 +30,15 @@ class User < ApplicationRecord
     length: {minimum: Settings.user.password_length}, allow_nil: true
   validates :email_resemble_password, email: true
 
+  scope :by_email, (lambda do |email|
+    where("email like ?", "%#{email}") if email.present?
+  end)
+
   before_save :downcase_email
   after_create :assign_default_role
+  before_destroy :change_email
+
+  acts_as_paranoid
 
   class << self
     def new_with_session params, session
@@ -71,5 +78,13 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase!
+  end
+
+  def change_email
+    email_count = User.only_deleted.by_email(email).size
+    email.insert Settings.email_locate,
+                 email_count.to_s.concat(Settings.soft_delete)
+    skip_reconfirmation!
+    save!
   end
 end

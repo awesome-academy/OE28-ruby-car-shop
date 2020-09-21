@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_073732) do
+ActiveRecord::Schema.define(version: 2020_09_21_072726) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -47,11 +47,13 @@ ActiveRecord::Schema.define(version: 2020_09_10_073732) do
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["brand_id"], name: "index_cars_on_brand_id"
     t.index ["car_model_id"], name: "index_cars_on_car_model_id"
     t.index ["car_type_id"], name: "index_cars_on_car_type_id"
     t.index ["color_id"], name: "index_cars_on_color_id"
     t.index ["condition_id"], name: "index_cars_on_condition_id"
+    t.index ["deleted_at"], name: "index_cars_on_deleted_at"
     t.index ["fuel_id"], name: "index_cars_on_fuel_id"
     t.index ["gearbox_id"], name: "index_cars_on_gearbox_id"
     t.index ["number_of_seat_id"], name: "index_cars_on_number_of_seat_id"
@@ -83,8 +85,10 @@ ActiveRecord::Schema.define(version: 2020_09_10_073732) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "commentable_id"
     t.string "commentable_type"
+    t.datetime "deleted_at"
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
     t.index ["commentable_type"], name: "index_comments_on_commentable_type"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -152,6 +156,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_073732) do
     t.boolean "activated", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -195,6 +201,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_073732) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

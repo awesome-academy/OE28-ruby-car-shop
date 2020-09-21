@@ -37,3 +37,5 @@ phone: 0987654321
 address: "Hà Nội"
 facebook: "Facebook"
 google: "Google"
+soft_delete: "--"
+email_locate: 0

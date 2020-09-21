@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
   scope :by_created_at, ->{order created_at: :desc}
 
   delegate :name, to: :user, prefix: true
+
+  acts_as_paranoid
 end
