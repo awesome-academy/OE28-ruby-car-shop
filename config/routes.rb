@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       post "posts/change_activated"
       resources :posts
     end
-    mount Ckeditor::Engine => '/ckeditor'
+    mount Ckeditor::Engine => "/ckeditor"
+    require "sidekiq/web"
+    mount Sidekiq::Web => "/sidekiq"
   end
 end
