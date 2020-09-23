@@ -101,4 +101,6 @@ class Post < ApplicationRecord
            :origin_name, :car_type_name, :brand_name, :car_model_name,
            :color_name, :number_of_seat_name, :condition_name, :fuel_name,
            :mileage, to: :car, prefix: true
+
+  acts_as_paranoid
 end

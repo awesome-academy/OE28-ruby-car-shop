@@ -29,4 +29,6 @@ class Car < ApplicationRecord
   delegate :name, to: :condition, prefix: true
   delegate :name, to: :fuel, prefix: true
   delegate :name, to: :origin, prefix: true
+
+  acts_as_paranoid
 end
